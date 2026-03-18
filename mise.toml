@@ -12,10 +12,12 @@ run = """
 #!/usr/bin/env bash
 set -euo pipefail
 
+cargo install worker-build --locked
+
 ruby ./entry.rb
 ./fblog_system/deploy_scripts/cloudflare/deploy_prod.sh \
     "$(pwd)/dist/system/articles" \
-    "$(pwd)/dist/system/user" \
+    "$(pwd)/dist/system/users" \
     "$(pwd)/dist/public" \
     "${PROJECT_NAME}" \
     "${SITE_URL}" \
