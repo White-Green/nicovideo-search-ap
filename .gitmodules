@@ -1,0 +1,4 @@
+[submodule "fblog_system"]
+	path = fblog_system
+	url = https://github.com/White-Green/fblog_system
+	branch = stable
