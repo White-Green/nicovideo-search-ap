@@ -2,3 +2,22 @@
 node = "22"
 pnpm = "10"
 ruby = "4.0"
+
+[env]
+PROJECT_NAME = "nicovideo-search-ap"
+SITE_URL = "nicovideo-search-ap.white-green.net"
+
+[tasks.deploy]
+run = """
+#!/usr/bin/env bash
+set -euo pipefail
+
+ruby ./entry.rb
+./fblog_system/deploy_scripts/cloudflare/deploy_prod.sh \
+    "$(pwd)/dist/system/articles" \
+    "$(pwd)/dist/system/user" \
+    "$(pwd)/dist/public" \
+    "${PROJECT_NAME}" \
+    "${SITE_URL}" \
+    "$(pwd)/publickey.pem"
+"""
