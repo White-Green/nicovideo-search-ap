@@ -1,0 +1,12 @@
+/*
+!/fblog_system
+!/lib
+!/public
+!/templates
+!/.gitignore
+!/.gitmodules
+!/entry.rb
+!/Gemfile
+!/Gemfile.lock
+!/mise.toml
+!/settings.yaml
