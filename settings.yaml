@@ -1,6 +1,6 @@
 videofes:
   name: 動画投稿祭企画bot
   bio: ニコニコ動画に投稿されている動画投稿祭などの企画告知をシェアするbotです
-  avatar: ""
+  avatar: /icons/videofes.png
   query: ["ボイロ企画告知", "OR", "ソフトウェアトーク企画告知"]
   period_days: 183
