@@ -1,0 +1,20 @@
+[Unit]
+Description=Periodic deploy for nicovideo-search-ap
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=<DEPLOY_USER>
+Group=<DEPLOY_USER>
+WorkingDirectory=<REPO_DIR>
+Environment=HOME=<DEPLOY_HOME>
+LoadCredential=cloudflare_account_id:<CREDENTIAL_ACCOUNT_FILE>
+LoadCredential=cloudflare_api_token:<CREDENTIAL_TOKEN_FILE>
+ExecStart=/usr/bin/env bash <REPO_DIR>/scripts/deploy/run_periodic_deploy.sh <REPO_DIR>
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
