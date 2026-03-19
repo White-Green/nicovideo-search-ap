@@ -11,6 +11,10 @@
 3. clone先の `scripts/deploy/run_periodic_deploy.sh` と `scripts/deploy/systemd/*.template` を使って systemd を登録
 4. timer を有効化
 
+## 事前準備
+
+[mise](https://mise.jdx.dev/)が使える状態にしておいてください
+
 ## 実行
 
 ```bash

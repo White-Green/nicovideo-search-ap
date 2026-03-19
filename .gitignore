@@ -13,4 +13,5 @@
 !/Gemfile.lock
 !/mise.toml
 !/publickey.pem
+!/README.md
 !/settings.yaml
