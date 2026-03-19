@@ -3,8 +3,10 @@
 !/lib
 !/public
 !/templates
+!/scripts
 !/.gitignore
 !/.gitmodules
+!/DEPLOY_SETUP.md
 !/entry.rb
 !/Gemfile
 !/Gemfile.lock
