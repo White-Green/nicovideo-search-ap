@@ -5,6 +5,7 @@
     <title><%= video.title %></title>
 </head>
 <body>
-    <a href="https://nico.ms/<%= video.id %>"><%= video.id %></a>
+    <h1><%= video.title %></h1>
+    <%= video.posted_at %> : <a href="https://nico.ms/<%= video.id %>"><%= video.id %></a>
 </body>
 </html>

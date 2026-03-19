@@ -7,7 +7,7 @@
 <body>
     <p><%= search_setting.bio %></p>
     <% search_result.each do |video| %>
-    <p><a href="/articles/<%= userid %>/<%= video.id %>"><%= video.title %></a></p>
+    <p><%= video.posted_at %> : <a href="/articles/<%= userid %>/<%= video.id %>"><%= video.title %></a></p>
     <% end %>
 </body>
 </html>
