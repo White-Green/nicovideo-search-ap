@@ -58,6 +58,7 @@ input.each do |userid, setting|
 
     user_yml = make_user_yml(search_setting: setting, search_result:)
     user_html = user_html_erb.result_with_hash(
+        userid:,
         search_setting: setting,
         search_result:,
     )
