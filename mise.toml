@@ -2,6 +2,7 @@
 node = "22"
 pnpm = "10"
 ruby = "4.0"
+rust = "stable"
 
 [env]
 PROJECT_NAME = "nicovideo-search-ap"
@@ -15,7 +16,24 @@ set -euo pipefail
 cargo install worker-build --locked
 
 ruby ./entry.rb
-./fblog_system/deploy_scripts/cloudflare/deploy_prod.sh \
+cf_account_id="${CLOUDFLARE_ACCOUNT_ID:-}"
+cf_api_token="${CLOUDFLARE_API_TOKEN:-}"
+
+if [ -z "$cf_account_id" ] && [ -n "${CREDENTIALS_DIRECTORY:-}" ] && [ -r "${CREDENTIALS_DIRECTORY}/cloudflare_account_id" ]; then
+  cf_account_id="$(tr -d '\r\n' < "${CREDENTIALS_DIRECTORY}/cloudflare_account_id")"
+fi
+
+if [ -z "$cf_api_token" ] && [ -n "${CREDENTIALS_DIRECTORY:-}" ] && [ -r "${CREDENTIALS_DIRECTORY}/cloudflare_api_token" ]; then
+  cf_api_token="$(tr -d '\r\n' < "${CREDENTIALS_DIRECTORY}/cloudflare_api_token")"
+fi
+
+if [ -z "$cf_account_id" ] || [ -z "$cf_api_token" ]; then
+  echo "ERROR: Cloudflare credentials are missing." >&2
+  echo "Set CLOUDFLARE_ACCOUNT_ID/CLOUDFLARE_API_TOKEN or provide systemd credentials." >&2
+  exit 1
+fi
+
+CLOUDFLARE_ACCOUNT_ID="$cf_account_id" CLOUDFLARE_API_TOKEN="$cf_api_token" ./fblog_system/deploy_scripts/cloudflare/deploy_prod.sh \
     "$(pwd)/dist/system/articles" \
     "$(pwd)/dist/system/users" \
     "$(pwd)/dist/public" \
