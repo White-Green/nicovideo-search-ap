@@ -2,7 +2,7 @@ videofes:
   name: 動画投稿祭企画bot
   bio: |-
     ニコニコ動画に投稿されている動画投稿祭などの企画告知をシェアするbotです
-    ニコニコ動画および各投稿祭とは関係のない非公式botです
+    ニコニコ動画および各投稿祭とは何の関係もありません
     運用責任者 → @white_green@voskey.icalo.net
   avatar: /icons/videofes.png
   query: ["ボイロ企画告知", "OR", "ソフトウェアトーク企画告知"]
