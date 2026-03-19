@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# ref: https://site.nicovideo.jp/search-api-docs/snapshot
+
 require "json"
 require "net/http"
 require "time"
@@ -46,8 +48,8 @@ end
 Video = Struct.new(:id, :title, :posted_at, keyword_init: true)
 
 SEARCH_ENDPOINT = URI("https://snapshot.search.nicovideo.jp/api/v2/snapshot/video/contents/search")
-DEFAULT_USER_AGENT = "nicovideo-search-ap/1.0"
-DEFAULT_CONTEXT = "nicovideo_search_ap"
+DEFAULT_USER_AGENT = "White-Green/nicovideo-search-ap"
+DEFAULT_CONTEXT = "White-Green/nicovideo-search-ap"
 DEFAULT_FIELDS = %w[contentId title startTime].freeze
 MAX_LIMIT = 100
 MAX_RESULTS = 10_000
@@ -111,7 +113,7 @@ def request_snapshot(query_string:, period_start:, offset:, limit:)
     "_limit" => limit.to_s,
     "_context" => DEFAULT_CONTEXT,
   }
-  params["targets"] = "title,description,tags" unless query_string.empty?
+  params["targets"] = "tagsExact" unless query_string.empty?
 
   uri = SEARCH_ENDPOINT.dup
   uri.query = URI.encode_www_form(params)
