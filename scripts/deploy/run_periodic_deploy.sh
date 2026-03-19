@@ -10,15 +10,15 @@ log() {
 
 clean_repo() {
   git reset --hard HEAD
-  git clean -ffd -e fblog_system/node_modules -e fblog_system/target
+  git clean -ffdx -e fblog_system/node_modules -e fblog_system/target
 
   git submodule foreach --recursive '
     set -e
     git reset --hard HEAD
     if [ "$name" = "fblog_system" ]; then
-      git clean -ffd -e node_modules -e target
+      git clean -ffdx -e node_modules -e target
     else
-      git clean -ffd
+      git clean -ffdx
     fi
   '
 }
