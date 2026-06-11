@@ -9,9 +9,19 @@ PROJECT_NAME = "nicovideo-search-ap"
 SITE_URL = "nicovideo-search-ap.white-green.net"
 
 [tasks.deploy]
+env = {
+  WORKER_BUILD_ROOT = "{{config_root}}/.tmp/cargo-install/worker-build",
+  _.path = "{{env.HOME}}/.cache/nicovideo-search-ap/cargo-install/worker-build/bin",
+}
 run = """
 #!/usr/bin/env bash
 set -euo pipefail
+
+WORKER_BUILD_VERSION="$(
+  cargo metadata --manifest-path "$REPO_ROOT/fblog_system/Cargo.toml" --no-deps --format-version 1 \
+    | jq -er '.metadata["cargo-binaries"]["worker-build"]'
+)"
+cargo install --locked "worker-build@${WORKER_BUILD_VERSION}" --root "$WORKER_BUILD_ROOT"
 
 bundle install
 cargo install worker-build --locked
