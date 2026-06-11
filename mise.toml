@@ -11,8 +11,8 @@ SITE_URL = "nicovideo-search-ap.white-green.net"
 [tasks.deploy]
 env = {
   REPO_ROOT = "{{config_root}}",
-  WORKER_BUILD_ROOT = "{{config_root}}/.tmp/cargo-install/worker-build",
-  _.path = "{{config_root}}/.tmp/cargo-install/worker-build/bin",
+  WORKER_BUILD_ROOT = "{{env.HOME}}/.nicovideo-search-ap/cargo-install/worker-build",
+  _.path = "{{env.HOME}}/.nicovideo-search-ap/cargo-install/worker-build/bin",
 }
 run = """
 #!/usr/bin/env bash
