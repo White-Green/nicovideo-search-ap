@@ -12,7 +12,7 @@ SITE_URL = "nicovideo-search-ap.white-green.net"
 env = {
   REPO_ROOT = "{{config_root}}",
   WORKER_BUILD_ROOT = "{{config_root}}/.tmp/cargo-install/worker-build",
-  _.path = "{{env.HOME}}/.tmp/cargo-install/worker-build/bin",
+  _.path = "{{config_root}}/.tmp/cargo-install/worker-build/bin",
 }
 run = """
 #!/usr/bin/env bash
@@ -25,7 +25,6 @@ WORKER_BUILD_VERSION="$(
 cargo install --locked "worker-build@${WORKER_BUILD_VERSION}" --root "$WORKER_BUILD_ROOT"
 
 bundle install
-cargo install worker-build --locked
 
 ruby ./entry.rb
 cf_account_id="${CLOUDFLARE_ACCOUNT_ID:-}"
