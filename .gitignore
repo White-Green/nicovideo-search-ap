@@ -14,4 +14,5 @@
 !/mise.toml
 !/publickey.pem
 !/README.md
+!/renovate.json5
 !/settings.yaml
