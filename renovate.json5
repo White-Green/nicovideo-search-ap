@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  extends: ["config:recommended"],
+
+  minimumReleaseAge: "3 days",
+
+  "git-submodules": {
+    enabled: true,
+  },
+
+  packageRules: [
+    {
+      description: "Group Ruby gem patch/minor updates into one PR.",
+      matchManagers: ["bundler"],
+      matchUpdateTypes: ["patch", "minor"],
+      groupName: "Ruby gem patch/minor updates",
+      groupSlug: "ruby-gem-patch-minor",
+    },
+  ],
+}
