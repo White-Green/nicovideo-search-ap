@@ -9,6 +9,10 @@
     enabled: true,
   },
 
+  mise: {
+    enabled: true,
+  },
+
   packageRules: [
     {
       description: "Group Ruby gem patch/minor updates into one PR.",
