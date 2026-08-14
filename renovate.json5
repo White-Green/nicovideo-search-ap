@@ -5,6 +5,10 @@
 
   minimumReleaseAge: "3 days",
 
+  lockFileMaintenance: {
+    enabled: true,
+  },
+
   "git-submodules": {
     enabled: true,
   },
