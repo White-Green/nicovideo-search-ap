@@ -1,7 +1,7 @@
 [tools]
 node = "24.21.0"
 pnpm = "12.4.1"
-ruby = "4.0.6"
+ruby = "4.0.7"
 rust = "stable"
 
 [env]
