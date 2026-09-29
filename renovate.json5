@@ -26,5 +26,16 @@
       groupName: "Ruby gem patch/minor updates",
       groupSlug: "ruby-gem-patch-minor",
     },
+    {
+      description: "Skip Node.js and Ruby changelogs in dependency update PRs.",
+      matchDatasources: ["node-version", "ruby-version"],
+      fetchChangeLogs: "off",
+    },
+    {
+      description: "Skip pnpm changelogs in dependency update PRs.",
+      matchDatasources: ["npm"],
+      matchPackageNames: ["pnpm"],
+      fetchChangeLogs: "off",
+    },
   ],
 }
